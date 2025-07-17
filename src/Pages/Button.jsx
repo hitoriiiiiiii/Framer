@@ -13,7 +13,7 @@ const Button= () => {
         perspective: '1000px', // 🎯 Enables 3D transform
       }}
     >
-      <h1 className="text-white text-4xl font-semibold">Hello World!!</h1>
+      <h2 className="text-white text-4xl font-semibold">Button made using framer</h2>
 
       <motion.button
         whileHover={{
