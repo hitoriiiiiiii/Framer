@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* === Gradient Text Utility === */
 .magenta-pink-gradient {
   background: linear-gradient(90deg, #30033e, #7434c2, #2e0645);
   background-size: 200% 200%;
@@ -17,6 +18,8 @@
 .animate-gradient-x {
   animation: gradient-x 1.2s cubic-bezier(0.4,0,0.2,1);
 }
+
+/* === Flower Pattern Styles (used in HomePage.jsx) === */
 
 .btn {
     height: 4em;
@@ -54,7 +57,7 @@
     transition: all 0.5s ease;
   }
   
-  .flower {
+ .flower {
     position: relative;
     width: 2.5em;
     height: 2.5em;
@@ -270,4 +273,105 @@
   justify-content: center;
   align-items: center;
   gap: 2.5em; /* space between flowers */
+}
+/* === Uiverse.io Button Styles === */
+.uiverse-btn {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #03045e;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+  background: transparent;
+  cursor: pointer;
+}
+
+.uiverse-btn::before,
+.uiverse-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  transform: skew(15deg);
+  transition: all 0.5s;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.uiverse-btn::before {
+  left: -10px;
+  background: #240046;
+}
+
+.uiverse-btn::after {
+  right: -10px;
+  background: #5a189a;
+}
+
+.uiverse-btn:hover::before,
+.uiverse-btn:hover::after {
+  width: 58%;
+}
+
+.uiverse-btn:hover span {
+  color: #e0aaff;
+  transition: 0.3s;
+}
+
+.uiverse-btn span {
+  color: #080912;
+  font-size: 18px;
+  transition: all 0.3s ease-in;
+}
+
+/* === Uiverse.io Card Styles for Button Descriptions === */
+.card {
+  --text: #050505;
+  --bg: #ffffff;
+  --shadow-color: #000000;
+  --pattern-color: #cfcfcf;
+
+  position: relative;
+  width: 20em;
+  background: var(--bg);
+  border: 0.35em solid var(--text);
+  border-radius: 0.6em;
+  box-shadow:
+    0.7em 0.7em 0 var(--shadow-color),
+    inset 0 0 0 0.15em rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  transform-origin: center;
+}
+
+.card:hover {
+  transform: translate(-0.4em, -0.4em) scale(1.02);
+  box-shadow: 1em 1em 0 var(--shadow-color);
+}
+
+.card-body {
+  position: relative;
+  padding: 1.5em;
+  z-index: 2;
+}
+
+.card-description {
+  margin-bottom: 1.5em;
+  color: var(--text);
+  font-size: 0.95em;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* === Bloom effect for mobile flowers === */
+.bloom .petal {
+  width: 2em !important;
+  height: 2em !important;
+  background: #ffb347 !important;
+  transition: width 0.5s, height 0.5s, background 0.5s;
 }

@@ -1,22 +1,11 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion, useAnimation } from "framer-motion";
 import { SiGithub, SiX } from "react-icons/si";
+import { buttonLinks } from "../components/buttonlinks";
 
-const GITHUB_URL = 'https://github.com/hitoriiiiiiii/Framer.git';
-const TWITTER_URL = 'https://twitter.com/panic_coder';
-
-const buttonLinks = [
-  { label: 'Button', to: '/button', desc: 'Animated, modern buttons' },
-  { label: 'Card', to: '/card', desc: 'Beautiful card layouts' },
-  { label: 'Contact Page', to: '/contact', desc: 'Get in touch' },
-];
-
-const cardGradients = [
-  'from-[#F5F5DC] to-[#D2B48C]',
-  'from-[#F5F5DC] to-[#D2B48C]',
-  'from-[#F5F5DC] to-[#D2B48C]',
-];
+const GITHUB_URL = "https://github.com/hitoriiiiiiii/Framer.git";
+const TWITTER_URL = "https://twitter.com/panic_coder";
 
 export default function HomePage() {
   const [glow, setGlow] = useState(false);
@@ -25,47 +14,54 @@ export default function HomePage() {
   const handleHeaderClick = () => {
     setGlow(true);
     controls.start({
-      z: [0, 80, 0], // Pops out and returns
-      transition: { duration: 0.8, times: [0, 0.5, 1], ease: 'easeInOut' }
+      z: [0, 80, 0],
+      transition: { duration: 0.8, times: [0, 0.5, 1], ease: "easeInOut" },
     });
     setTimeout(() => setGlow(false), 1200);
   };
 
   return (
-    <div className="min-h-screen w-full relative">
-      {/* Radial Gradient Background from Bottom */}
+    <div className="relative min-h-screen w-full">
+      {/* Background Gradient */}
       <div
         className="absolute inset-0 z-0"
         style={{
-          background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #7c3aed 100%)",
+          background:
+            "radial-gradient(125% 125% at 50% 90%, #fff 40%, #7c3aed 100%)",
         }}
       />
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 min-h-screen w-full">
-        {/* Hero Section */}
-        <section className="relative z-10 flex flex-col items-center mb-12 mt-8" style={{ perspective: 1000 }}>
+      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center px-4">
+        <section
+          className="relative z-10 mt-8 mb-12 flex flex-col items-center"
+          style={{ perspective: 1000 }}
+        >
           <motion.h1
-            className={`text-lg xs:text-xl sm:text-2xl md:text-4xl lg:text-4xl font-extrabold text-center break-words leading-tight px-2 sm:px-0 drop-shadow-lg mb-4 transition-colors duration-300 ${glow ? 'magenta-pink-gradient animate-gradient-x' : 'text-black'}`}
+            className={`xs:text-xl mt-12 mb-12 px-2 text-center text-lg leading-tight font-extrabold break-words drop-shadow-lg transition-colors duration-300 sm:px-0 sm:text-2xl md:text-4xl lg:text-4xl ${
+              glow ? "magenta-pink-gradient animate-gradient-x" : "text-black"
+            }`}
             onClick={handleHeaderClick}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             animate={controls}
             initial={{ z: 0, scale: 1.5 }}
           >
             Hitorii&apos;s Framer Projects 💖
           </motion.h1>
-          <div className="flex flex-col my-12 items-center justify-center gap-6">
-            {/* Flower pattern above */}
+
+          <div className="my-12 flex flex-col items-center justify-center gap-6">
+            {/* flower*/}
             <div
-              className="btn w-full max-w-5xl mx-auto"
+              className="btn mx-auto w-full max-w-5xl"
               style={{
                 position: "relative",
                 width: "100%",
                 height: "clamp(4em, 18vw, 6em)",
                 marginBottom: "2.5em",
-                minHeight: '3em',
+                minHeight: "3em",
               }}
             >
-              {/* Desktop/Laptop Flowers */}
-              <div className="hidden sm:block w-full h-full">
+              <div className="hidden h-full w-full sm:block">
+                {/* Desktop flowers positions... */}
+                 <div className="hidden sm:block w-full h-full">
                 {/* Flower 1 (far left, top) */}
                 <div className="flower" style={{ position: "absolute", left: "8vw", top: "10%" }}>
                   <div className="petal one" style={{ transform: 'rotate(0deg) translateY(-0.3em)' }}></div>
@@ -122,22 +118,36 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Mobile Flowers with tap-to-bloom */}
+
+              </div>
               <MobileFlowers />
             </div>
-            {/* Text with visible wrapper below */}
-            <div className="wrapper mx-auto w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl px-2 sm:px-4" style={{ minWidth: '0', maxWidth: '100%' }}>
-              <span className="text font-bold text-black block text-center text-base sm:text-lg md:text-xl">
-                Explore a collection of playful, interactive UI experiments and components built with Framer Motion.<br />
+
+            {/* Mobile Text Section */}
+            <div className="block sm:hidden mx-auto w-full max-w-xs px-4">
+              <span className="text font-bold text-black block text-center text-sm leading-normal">
+                Explore playful, interactive UI experiments with Framer Motion.
+                <br />
+                Get inspired, remix your favorites!
+              </span>
+            </div>
+
+            {/* Desktop Text Section */}
+            <div className="hidden sm:block mx-auto w-full max-w-2xl md:max-w-4xl lg:max-w-5xl px-2">
+              <span className="text font-bold text-black block text-center text-base sm:text-lg md:text-xl leading-normal">
+                Explore a collection of playful, interactive UI experiments and components built with Framer Motion.
+                <br />
                 Dive in, get inspired, and remix your favorites!
               </span>
             </div>
           </div>
-          <div className="flex space-x-6 mt-1">
+
+          <div className="mt-1 flex space-x-6">
             <a
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-purple-950 transition-colors"
+              className="transition-colors hover:text-purple-950"
               aria-label="GitHub"
             >
               <SiGithub size={38} />
@@ -146,7 +156,7 @@ export default function HomePage() {
               href={TWITTER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-purple-950 transition-colors"
+              className="transition-colors hover:text-purple-950"
               aria-label="Twitter"
             >
               <SiX size={38} />
@@ -155,25 +165,22 @@ export default function HomePage() {
         </section>
 
         {/* Buttons */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 z-10 w-full max-w-4xl mt-4">
-          {buttonLinks.map((btn, idx) => (
-            <motion.div
-              key={btn.label}
-              whileHover={{ rotate: -2 + idx * 2 }}
-              whileTap={{ boxShadow: '0 0 0 8px rgba(236,72,153,0.15)' }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className={`group relative bg-gradient-to-br ${cardGradients[idx % cardGradients.length]} rounded-2xl p-2 sm:p-4 md:p-6 max-w-[170px] sm:max-w-xs w-full`}
-            >
-              <Link
-                to={btn.to}
-                className="block bg-transparent rounded-2xl p-3 sm:p-6 h-full transition-colors duration-300 group-hover:bg-white/60"
-              >
-                <div className="flex flex-col items-center justify-center h-full">
-                  <span className="text-base sm:text-lg md:text-2xl font-bold text-smokey-black mb-1 sm:mb-2">{btn.label}</span>
-                  <span className="text-xs sm:text-sm text-center text-smokey-black">{btn.desc}</span>
+        <div className="z-10 grid w-full max-w-4xl grid-cols-1 gap-x-8 gap-y-8 pt-8 pb-12 sm:grid-cols-2">
+          {buttonLinks.map((btn) => (
+            <div key={btn.label} className="flex justify-center">
+              <div className="card flex flex-col items-center">
+                <Link to={btn.to} style={{ textDecoration: "none" }}>
+                  <button className="uiverse-btn m-4">
+                    <span>{btn.label}</span>
+                  </button>
+                </Link>
+                <div className="card-body w-full">
+                  <div className="card-description text-center">
+                    {btn.desc}
+                  </div>
                 </div>
-              </Link>
-            </motion.div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -185,20 +192,44 @@ function MobileFlowers() {
   const [bloom, setBloom] = useState(false);
   return (
     <div
-      className={`flex flex-wrap justify-center items-center gap-4 sm:hidden w-full h-full ${bloom ? 'bloom' : ''}`}
+      className={
+        "flex h-full w-full flex-wrap items-center justify-center gap-4 sm:hidden"
+      }
       onTouchStart={() => setBloom(true)}
       onTouchEnd={() => setTimeout(() => setBloom(false), 600)}
       onMouseDown={() => setBloom(true)}
       onMouseUp={() => setTimeout(() => setBloom(false), 600)}
     >
       {[...Array(6)].map((_, i) => (
-        <div key={i} className="flower" style={{ width: '1.2em', height: '1.2em' }}>
-          <div className={`petal one${bloom ? ' bloom' : ''}`} style={{ transform: 'rotate(0deg) translateY(-0.2em)' }}></div>
-          <div className={`petal two${bloom ? ' bloom' : ''}`} style={{ transform: 'rotate(60deg) translateY(-0.2em)' }}></div>
-          <div className={`petal three${bloom ? ' bloom' : ''}`} style={{ transform: 'rotate(120deg) translateY(-0.2em)' }}></div>
-          <div className={`petal four${bloom ? ' bloom' : ''}`} style={{ transform: 'rotate(180deg) translateY(-0.2em)' }}></div>
-          <div className={`petal five${bloom ? ' bloom' : ''}`} style={{ transform: 'rotate(240deg) translateY(-0.2em)' }}></div>
-          <div className={`petal six${bloom ? ' bloom' : ''}`} style={{ transform: 'rotate(300deg) translateY(-0.2em)' }}></div>
+        <div
+          key={i}
+          className="flower"
+          style={{ width: "1.2em", height: "1.2em" }}
+        >
+          <div
+            className={`petal one${bloom ? "bloom" : ""}`}
+            style={{ transform: "rotate(0deg) translateY(-0.2em)" }}
+          ></div>
+          <div
+            className={`petal two${bloom ? "bloom" : ""}`}
+            style={{ transform: "rotate(60deg) translateY(-0.2em)" }}
+          ></div>
+          <div
+            className={`petal three${bloom ? "bloom" : ""}`}
+            style={{ transform: "rotate(120deg) translateY(-0.2em)" }}
+          ></div>
+          <div
+            className={`petal four${bloom ? "bloom" : ""}`}
+            style={{ transform: "rotate(180deg) translateY(-0.2em)" }}
+          ></div>
+          <div
+            className={`petal five${bloom ? "bloom" : ""}`}
+            style={{ transform: "rotate(240deg) translateY(-0.2em)" }}
+          ></div>
+          <div
+            className={`petal six${bloom ? "bloom" : ""}`}
+            style={{ transform: "rotate(300deg) translateY(-0.2em)" }}
+          ></div>
         </div>
       ))}
     </div>
