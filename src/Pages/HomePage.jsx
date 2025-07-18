@@ -118,7 +118,6 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Mobile Flowers with tap-to-bloom */}
-
               </div>
               <MobileFlowers />
             </div>
