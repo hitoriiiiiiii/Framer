@@ -61,7 +61,7 @@ export default function HomePage() {
             >
               <div className="hidden h-full w-full sm:block">
                 {/* Desktop flowers positions... */}
-                 <div className="hidden sm:block w-full h-full">
+              <div className="hidden sm:block w-full h-full">
                 {/* Flower 1 (far left, top) */}
                 <div className="flower" style={{ position: "absolute", left: "8vw", top: "10%" }}>
                   <div className="petal one" style={{ transform: 'rotate(0deg) translateY(-0.3em)' }}></div>
