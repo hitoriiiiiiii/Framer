@@ -4,9 +4,9 @@ import HomePage from './Pages/HomePage';
 import Button from './Pages/Button';
 import Card from './Pages/Card';
 import ParticleRing from './Pages/Ring';
-import Example from './Pages/Phone'
-import Hover from './Pages/HoverMe'
-// import ContactPage from './Pages/ContactPage';
+import Example from './Pages/Phone';
+import Hover from './Pages/HoverMe';
+import Pop from './Pages/Menu.jsx';
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         <Route path="/ring" element={<ParticleRing/>}/>        {/* Uncomment these when you have the pages created */}
         <Route path="/phone" element={<Example />} />
         <Route path="/hover" element={<Hover/>} />
+        <Route path="/menu" element = {<Pop/>} />
       </Routes>
     </Router>
   );
