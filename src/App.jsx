@@ -21,7 +21,7 @@ function App() {
         <Route path="/ring" element={<ParticleRing/>}/>        {/* Uncomment these when you have the pages created */}
         <Route path="/phone" element={<Example />} />
         <Route path="/hover" element={<Hover/>} />
-        <Route path="/menu" element = {<Pop/>} />
+        <Route path="/Popup" element = {<Pop/>} />
       </Routes>
     </Router>
   );
